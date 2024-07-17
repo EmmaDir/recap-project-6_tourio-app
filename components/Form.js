@@ -25,15 +25,17 @@ const Label = styled.label`
 `;
 
 export default function Form({ onSubmit, formName, defaultData }) {
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target);
-  //   const data = Object.fromEntries(formData);
-  //   onSubmit(data);
-  // }
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    onSubmit(data);
+    event.target.reset();
+  }
 
   return (
-    <FormContainer aria-labelledby={formName} onSubmit={onSubmit}>
+    <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
       <Label htmlFor="name">Name</Label>
       <Input
         id="name"
