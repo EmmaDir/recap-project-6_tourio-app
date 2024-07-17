@@ -1,6 +1,8 @@
 import dbConnect from "@/db/connect";
 import Place from "@/db/models/Place";
 
+export const config = { maxDuration: 60 };
+
 export default async function handler(request, response) {
   await dbConnect();
 
