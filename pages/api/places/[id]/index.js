@@ -20,4 +20,9 @@ export default async function handler(request, response) {
     await Place.findByIdAndUpdate(id, { $set: placeData });
     return response.status(200).json({ status: "Place updated!" });
   }
+
+  if (request.method === "DELETE") {
+    await Place.findByIdAndDelete(id);
+    response.status(200).json({ status: "Place successfully deleted." });
+  }
 }
